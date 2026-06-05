@@ -29,13 +29,13 @@ Backend APIs are where most real software lives. This template establishes the p
 
 | Scenario | Fit |
 |---|---|
-| REST API with CRUD operations (users, products, etc.) | ✅ Ideal |
-| Backend service with authentication and authorization | ✅ Ideal |
-| Portfolio API demonstrating layered architecture | ✅ Ideal |
-| Microservice with a single responsibility | ✅ Good |
-| GraphQL API | ⚠️ Adapt `src/api/` structure to resolvers |
-| WebSocket-only service | ⚠️ Adapt as needed |
-| Static website backend | ❌ Use `template-static-web` |
+| REST API with CRUD operations (users, products, etc.) | Ideal |
+| Backend service with authentication and authorization | Ideal |
+| Portfolio API demonstrating layered architecture | Ideal |
+| Microservice with a single responsibility | Good |
+| GraphQL API | Adapt `src/api/` structure to resolvers |
+| WebSocket-only service | Adapt as needed |
+| Static website backend | Use `template-static-web` |
 
 ---
 
