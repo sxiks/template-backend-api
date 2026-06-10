@@ -6,6 +6,29 @@ The objective is to demonstrate architectural patterns, not framework-specific t
 
 ---
 
+## Prerequisites
+
+- Python 3.11+
+- FastAPI
+- Uvicorn
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+---
+
+## Example Structure
+
+```text
+01-basic-endpoint/
+02-crud/
+03-auth/
+
+```
+---
+
 ## Technology Stack
 
 * Python

@@ -23,6 +23,19 @@ Each technology-specific example shows how the following concepts are applied in
 
 ---
 
+## Repository Philosophy
+
+This repository is an architectural template.
+
+The directories under `src/`, `config/`, and `tests/` explain how a professional backend project should be organized.
+
+The `examples/` directory contains practical implementations that demonstrate how those concepts can be applied using different technologies.
+
+Architecture explains.
+Examples demonstrate.
+
+---
+
 ## Available Implementations
 
 ### FastAPI

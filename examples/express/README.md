@@ -6,6 +6,29 @@ The objective is to demonstrate architectural concepts using the Node.js ecosyst
 
 ---
 
+## Prerequisites
+
+- Node.js LTS
+- npm
+
+Install dependencies:
+
+```bash
+npm install
+
+```
+---
+
+## Example Structure
+
+```text
+01-basic-endpoint/
+02-crud/
+03-auth/
+
+```
+---
+
 ## Technology Stack
 
 * Node.js
