@@ -1,104 +1,155 @@
 # template-backend-api
 
-> A production-oriented starting structure for backend REST APIs.
-> Language-agnostic, layered architecture, versioned from day one.
+> A language-agnostic backend architecture template designed to teach professional API organization, documentation practices, testing strategies, and scalable project structure.
 
 ---
 
-## Purpose
+# Overview
 
-Backend APIs are where most real software lives. This template establishes the professional conventions — versioning, layering, testing pyramid, environment configuration — that you'll encounter in every professional codebase. Using this template from the start prevents the common mistakes of monolithic files, hardcoded configuration, and untested services.
+Backend APIs power most modern applications. Regardless of whether a project is built with FastAPI, Express, Spring Boot, NestJS, Flask, or another framework, successful systems tend to share the same architectural principles:
 
-**Use this template when you are:**
+* Clear separation of concerns
+* Layered architecture
+* Versioned APIs
+* Environment-based configuration
+* Structured testing
+* Documentation-first development
+* Scalability and maintainability
 
-- Building a REST API in any language (Python/FastAPI, Python/Flask, Node.js/Express, Java/Spring, etc.)
-- Starting a backend project that will expose HTTP endpoints
-- Building a service layer that other applications (frontend, mobile) will consume
-- Creating a portfolio API project that demonstrates professional architecture
+This repository is not a runnable application.
 
-**Do NOT use this template when you are:**
-
-- Building a static website → use `template-static-web`
-- Building a database-only project → use `template-database`
-- Building a frontend application → use `template-frontend-app`
-- Building a simple academic script → use `template-academic`
+Instead, it serves as a reference architecture, learning resource, and reusable template for designing professional backend systems.
 
 ---
 
-## Use Cases
+# Repository Goals
 
-| Scenario | Fit |
-|---|---|
-| REST API with CRUD operations (users, products, etc.) | Ideal |
-| Backend service with authentication and authorization | Ideal |
-| Portfolio API demonstrating layered architecture | Ideal |
-| Microservice with a single responsibility | Good |
-| GraphQL API | Adapt `src/api/` structure to resolvers |
-| WebSocket-only service | Adapt as needed |
-| Static website backend | Use `template-static-web` |
+This repository exists to help developers:
+
+* Learn backend architecture fundamentals
+* Understand professional project organization
+* Compare implementations across technologies
+* Establish consistent development conventions
+* Build maintainable backend services
+* Create new API projects from a proven structure
 
 ---
 
-## Architecture Overview
+# When to Use This Template
 
-This template is built around a **layered architecture** — the standard pattern in professional backend development. Each layer has one job and one job only.
+Use this template when you are:
 
+* Starting a new REST API project
+* Learning backend architecture
+* Building portfolio projects
+* Designing service-oriented applications
+* Creating reusable backend standards
+* Teaching backend development concepts
+
+Examples:
+
+* User management APIs
+* Inventory systems
+* Authentication services
+* E-commerce backends
+* Educational projects
+* Internal business services
+
+---
+
+# When Not to Use This Template
+
+This repository is not intended for:
+
+* Static websites
+* Frontend-only applications
+* Database-only exercises
+* Small academic scripts
+* Single-file prototypes
+
+Consider using a more specialized template for those scenarios.
+
+---
+
+# Architecture Philosophy
+
+The template follows a layered architecture model.
+
+Each layer has a single responsibility.
+
+```text
+Client
+  ↓
+API Layer
+  ↓
+Service Layer
+  ↓
+Model Layer
+  ↓
+Database / External Systems
 ```
-HTTP Request
-     ↓
-┌─────────────┐
-│   api/v1/   │  ← Routes and controllers: only handles HTTP in/out
-└──────┬──────┘
-       ↓
-┌─────────────┐
-│  services/  │  ← Business logic: all decisions happen here
-└──────┬──────┘
-       ↓
-┌─────────────┐
-│   models/   │  ← Data structures and database interactions
-└─────────────┘
-```
 
-**`core/`** and **`utils/`** are shared by all layers — configuration, logging, helpers, constants.
+Benefits:
+
+* Easier maintenance
+* Better testing
+* Improved scalability
+* Cleaner code organization
+* Reduced coupling between components
 
 ---
 
-## Project Structure
+# Repository Structure
 
-```
+```text
 template-backend-api/
-├── .github/                        # GitHub automation
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug-report.md           # Standardized bug report form
-│   │   └── feature-request.md      # Standardized feature request form
-│   └── workflows/
-│       ├── ci.yml                  # Run tests on every push and PR
-│       └── cd.yml                  # Deploy on merge to main
-├── config/                         # All configuration — nothing hardcoded elsewhere
-│   ├── database.yml                # Database connection settings per environment
-│   ├── environments.yml            # Environment-specific variables reference
-│   └── logging.yml                 # Log levels and output format
-├── docs/                           # API and architecture documentation
-│   ├── api-reference.md            # All endpoints: method, path, params, response
-│   ├── architecture.md             # System design, layer diagram, key decisions
-│   ├── database-schema.md          # Tables, columns, relationships
-│   └── deployment.md               # How to deploy this API in each environment
-├── examples/                       # Working demonstrations of this template in use
-│   ├── example-01-basic-endpoint/  # One GET endpoint: route → controller → response
-│   ├── example-02-crud-operations/ # Full CRUD: routes, models, services, unit tests
-│   └── example-03-auth-integration/# JWT auth: middleware, protected routes, tests
+│
+├── .github/
+│
+├── config/
+│   ├── database.yml
+│   ├── environments.yml
+│   └── logging.yml
+│
+├── docs/
+│   ├── api-reference.md
+│   ├── architecture.md
+│   ├── database-schema.md
+│   ├── deployment.md
+│   │
+│   └── technologies/
+│       ├── fastapi.md
+│       └── express.md
+│
+├── examples/
+│   ├── README.md
+│   │
+│   ├── fastapi/
+│   │   ├── README.md
+│   │   ├── 01-basic-endpoint/
+│   │   ├── 02-crud/
+│   │   └── 03-auth/
+│   │
+│   └── express/
+│       ├── README.md
+│       ├── 01-basic-endpoint/
+│       ├── 02-crud/
+│       └── 03-auth/
+│
 ├── src/
 │   ├── api/
-│   │   └── v1/                     # All v1 routes and controllers
-│   ├── core/                       # Application-level logic: startup, error handling
-│   ├── models/                     # Data structures, ORM models, DB access
-│   ├── services/                   # Business logic — the heart of the application
-│   └── utils/                      # Reusable helpers: formatters, validators, constants
+│   │   └── v1/
+│   ├── core/
+│   ├── models/
+│   ├── services/
+│   └── utils/
+│
 ├── tests/
-│   ├── e2e/                        # End-to-end: full request-response cycles
-│   ├── integration/                # Integration: multiple components working together
-│   └── unit/                       # Unit: one function in complete isolation
-├── .env.example                    # Documents every required environment variable
+│   ├── e2e/
+│   ├── integration/
+│   └── unit/
+│
+├── .env.example
 ├── .gitignore
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
@@ -108,347 +159,370 @@ template-backend-api/
 
 ---
 
-## Folder Responsibilities
+# Core Directories
 
-### `src/api/v1/` — HTTP boundary
+## src/
 
-This is the **only** layer that knows about HTTP. It handles:
-- Defining routes and their HTTP methods
-- Parsing request data (query params, body, headers)
-- Calling the appropriate service function
-- Returning the HTTP response with correct status codes
+Reference implementation structure.
 
-It does **not** contain business logic. If you find yourself writing `if/else` conditions that aren't about HTTP format, move them to `services/`.
+Represents how a professional backend application should be organized.
 
-**Why v1?** Versioning from the start costs nothing. Adding v2 later without versioning costs weeks of refactoring.
-
-### `src/services/` — Business logic
-
-This is where all decisions happen. Services:
-- Validate business rules (not just format, but logic)
-- Coordinate between models
-- Call external APIs or integrations
-- Return domain objects or raise domain errors
-
-Services are **testable without HTTP**. If you can test a service with a plain function call, you've correctly separated it from the API layer.
-
-### `src/models/` — Data layer
-
-Defines what your data looks like and how it's stored:
-- Data classes or structs (language-dependent)
-- ORM models (SQLAlchemy, Sequelize, Hibernate)
-- Database access methods (queries, inserts, updates)
-
-### `src/core/` — Application infrastructure
-
-Things that every layer needs but don't belong to any one layer:
-- Application startup and shutdown lifecycle
-- Global error handlers and exception types
-- Middleware (authentication, logging, rate limiting)
-- Dependency injection configuration
-
-### `src/utils/` — Shared helpers
-
-Pure functions that have no side effects:
-- Date and string formatters
-- Input validators (format-only, not business rules)
-- Mathematical calculations
-- Constants and enums used across the codebase
-
-### `config/` — Configuration, never code
-
-All configuration is file-driven, not hardcoded. If a value could change between development, staging, and production, it belongs in `config/` and is loaded from environment variables.
-
-### `tests/` — The testing pyramid
-
-| Layer | What it tests | Speed | Count |
-|---|---|---|---|
-| `tests/unit/` | One function in isolation | Milliseconds | Many (most tests) |
-| `tests/integration/` | Two or more components together | Seconds | Some |
-| `tests/e2e/` | Full request-response cycle | Seconds | Few (critical paths only) |
+| Directory | Responsibility                          |
+| --------- | --------------------------------------- |
+| api/      | Routes, controllers, HTTP communication |
+| services/ | Business logic                          |
+| models/   | Data structures and persistence         |
+| core/     | Application infrastructure              |
+| utils/    | Shared helpers and utilities            |
 
 ---
 
-## Getting Started
+## tests/
 
-### Prerequisites
+Reference testing pyramid.
 
-- Git installed and configured
-- Your language runtime installed (Python 3.x, Node.js LTS, Java JDK 17+, etc.)
-- A database server if needed (PostgreSQL, MySQL, SQLite for development)
-
-### Initialize from template
-
-```bash
-# Clone the template
-git clone https://github.com/sxiks/template-backend-api.git my-api
-cd my-api
-
-# Disconnect from template remote
-git remote remove origin
-
-# Set your own remote
-git remote add origin https://github.com/sxiks/my-api.git
-
-# First commit
-git add .
-git commit -m "init: initialize API from template-backend-api"
-git push -u origin main
+```text
+tests/
+├── unit/
+├── integration/
+└── e2e/
 ```
 
-### Environment configuration
+Purpose:
 
-```bash
-# Copy the example file — NEVER commit the real .env
-cp .env.example .env
+* Unit tests validate isolated behavior
+* Integration tests validate component interaction
+* E2E tests validate complete workflows
 
-# Edit .env with your local values
-nano .env
+---
+
+## config/
+
+Contains examples of environment-dependent configuration.
+
+Examples:
+
+* Database settings
+* Logging configuration
+* Environment variables
+* Infrastructure parameters
+
+No values should be hardcoded inside application code.
+
+---
+
+# Documentation
+
+All long-form documentation belongs in the `docs/` directory.
+
+## Architecture
+
+```text
+docs/architecture.md
 ```
 
-The `.env.example` file documents every variable the application needs:
+Contains:
 
-```
-# Application
-APP_ENV=development
-APP_PORT=8000
-APP_SECRET_KEY=your-secret-key-here
-
-# Database
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=mydb_dev
-DB_USER=postgres
-DB_PASSWORD=your-password
-```
-
-### Run the application (language-dependent)
-
-```bash
-# Python / FastAPI example
-pip install -r requirements.txt
-uvicorn src.main:app --reload
-
-# Node.js / Express example
-npm install
-npm run dev
-
-# Java / Spring Boot example
-mvn spring-boot:run
-```
-
-### Run the test suite
-
-```bash
-# Python
-pytest tests/
-
-# Node.js
-npm test
-
-# Java
-mvn test
-```
+* System design
+* Architectural decisions
+* Layer responsibilities
+* Design principles
 
 ---
 
 ## API Reference
 
-Document every endpoint here as you build it.
-
-### Base URL
-
-```
-Development:  http://localhost:8000/api/v1
-Staging:      https://staging.yourapp.com/api/v1
-Production:   https://api.yourapp.com/api/v1
+```text
+docs/api-reference.md
 ```
 
-### Endpoint template
+Contains:
 
-```
-GET /api/v1/resource
-Authorization: Bearer <token>
-
-Response 200:
-{
-  "data": [...],
-  "total": 10,
-  "page": 1
-}
-
-Response 401:
-{
-  "error": "Unauthorized",
-  "message": "Token is missing or invalid"
-}
-```
-
-> Full reference: see [`docs/api-reference.md`](docs/api-reference.md)
+* Endpoint documentation
+* Request examples
+* Response examples
+* Error formats
 
 ---
 
-## Examples
+## Database Schema
 
-### `example-01-basic-endpoint`
-
-**Demonstrates:** The simplest possible API interaction.
-
-```
-Route definition → Controller function → Service call → Response
+```text
+docs/database-schema.md
 ```
 
-Read this example first. It shows the complete data flow through all layers for a single `GET` endpoint.
+Contains:
 
-### `example-02-crud-operations`
-
-**Demonstrates:** Full Create, Read, Update, Delete lifecycle for one resource.
-
-Includes:
-- All four HTTP methods (`GET`, `POST`, `PUT`, `DELETE`)
-- Model definition with database access
-- Service layer with business validation
-- Unit tests for the service
-- Integration tests for the routes
-
-### `example-03-auth-integration`
-
-**Demonstrates:** JWT authentication flow from login to protected resource access.
-
-Includes:
-- Login endpoint that issues a token
-- Auth middleware that validates incoming tokens
-- Protected route that requires a valid token
-- Unit tests for token generation and validation
-- Integration tests for the full auth flow
-
----
-
-## Development Workflow
-
-### Branch naming
-
-```
-main          ← stable, always deployable
-develop       ← integration branch
-feature/*     ← new endpoint or feature
-fix/*         ← bug correction
-docs/*        ← documentation only
-chore/*       ← dependencies, config, CI changes
-```
-
-### Commit convention
-
-```
-feat: add POST /api/v1/users endpoint
-fix: return 404 instead of 500 for missing resource
-docs: add authentication flow to api-reference.md
-test: add integration tests for product CRUD
-refactor: extract token logic to auth service
-chore: upgrade FastAPI to 0.110
-```
-
-### Adding a new endpoint — step by step
-
-```
-1. Define the route in src/api/v1/
-2. Create the service function in src/services/
-3. Add or update the model in src/models/ if needed
-4. Write unit tests in tests/unit/
-5. Write integration tests in tests/integration/
-6. Document the endpoint in docs/api-reference.md
-7. Update CHANGELOG.md
-```
-
----
-
-## Best Practices
-
-### Error handling
-
-- Use a global error handler in `src/core/` — no try/catch in every route.
-- Return consistent error responses with `error` and `message` fields.
-- Never expose stack traces or internal details to the client.
-- Use HTTP status codes correctly: 400 (bad input), 401 (unauthenticated), 403 (unauthorized), 404 (not found), 500 (server error).
-
-### Security
-
-- All secrets in environment variables — **never** hardcoded in code.
-- Validate and sanitize all incoming data before passing to services.
-- Never log passwords, tokens, or sensitive user data.
-- Use HTTPS in staging and production.
-- Rate-limit public endpoints.
-
-### Performance
-
-- Add database indexes to all columns used in WHERE clauses.
-- Paginate list endpoints — never return unbounded results.
-- Log response times and monitor for slow endpoints.
-
-### Logging
-
-- Log every request (method, path, status code, response time).
-- Log errors with full context (but no sensitive data).
-- Use structured logging (JSON format) in production.
-
----
-
-## Scaling Guidelines
-
-| When your API grows with... | Do this |
-|---|---|
-| More resources | Add new subdirectories under `src/api/v1/` per resource |
-| Breaking API changes | Create `src/api/v2/` — never break v1 |
-| More business complexity | Add subdirectories under `src/services/` |
-| Multiple databases | Separate models by database in `src/models/` |
-| External API integrations | Add `src/integrations/` |
-| Background jobs | Add `src/workers/` or a separate worker service |
-| Caching needs | Add `src/cache/` |
-| Large team | Split into microservices, each with its own `template-backend-api` instance |
+* Tables
+* Relationships
+* Entity descriptions
+* Data modeling decisions
 
 ---
 
 ## Deployment
 
-See [`docs/deployment.md`](docs/deployment.md) for full deployment instructions.
+```text
+docs/deployment.md
+```
 
-### Quick reference
+Contains:
 
-```bash
-# Build for production (language-dependent)
-# Python: no build step — install dependencies
-pip install -r requirements.txt
+* Environment setup
+* Infrastructure considerations
+* Deployment workflows
+* Production recommendations
 
-# Set environment variables on the server
-export APP_ENV=production
-export APP_SECRET_KEY=...
+---
 
-# Run with a production server
-gunicorn src.main:app --workers 4
+## Technology Notes
+
+```text
+docs/technologies/
+```
+
+Contains implementation-specific guidance.
+
+Current technologies:
+
+* FastAPI
+* Express
+
+Future technologies may include:
+
+* Spring Boot
+* NestJS
+* Flask
+* ASP.NET Core
+
+---
+
+# Examples
+
+The repository includes framework-specific examples.
+
+Purpose:
+
+* Demonstrate architectural concepts
+* Compare implementations
+* Learn framework conventions
+* Understand how architecture translates into code
+
+See:
+
+```text
+examples/
+```
+
+For more information:
+
+```text
+examples/README.md
 ```
 
 ---
 
-## Roadmap
+# Learning Path
 
-- [ ] Add language-specific starter configurations (Python/FastAPI, Node.js/Express)
-- [ ] Add Docker support (`Dockerfile`, `docker-compose.yml`)
-- [ ] Add database migration template (Alembic for Python, Flyway for Java)
-- [ ] Add rate limiting middleware example
-- [ ] Add OpenAPI/Swagger auto-documentation configuration
+Recommended study order:
 
----
+### Step 1
 
-## References
+Read:
 
-- [REST API Design Best Practices](https://restfulapi.net/)
-- [HTTP Status Codes Reference](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
-- [OWASP API Security Top 10](https://owasp.org/www-project-api-security/)
-- [FastAPI Documentation](https://fastapi.tiangolo.com/)
-- [Express.js Guide](https://expressjs.com/en/guide/routing.html)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [The Twelve-Factor App](https://12factor.net/)
+```text
+README.md
+```
+
+Understand the repository purpose and structure.
 
 ---
 
-*Template maintained by Sxik · Part of the proyectos_sena ecosystem.*
+### Step 2
+
+Study:
+
+```text
+docs/architecture.md
+```
+
+Learn the architectural concepts.
+
+---
+
+### Step 3
+
+Review:
+
+```text
+src/
+```
+
+Understand layer responsibilities.
+
+---
+
+### Step 4
+
+Study:
+
+```text
+tests/
+```
+
+Learn testing organization.
+
+---
+
+### Step 5
+
+Review:
+
+```text
+docs/technologies/
+```
+
+Understand framework-specific considerations.
+
+---
+
+### Step 6
+
+Explore:
+
+```text
+examples/fastapi/
+```
+
+and
+
+```text
+examples/express/
+```
+
+Compare implementations.
+
+---
+
+# Development Workflow
+
+Recommended branch strategy:
+
+```text
+main
+develop
+feature/*
+fix/*
+docs/*
+chore/*
+```
+
+---
+
+## Commit Convention
+
+Examples:
+
+```text
+feat: add user authentication example
+fix: correct architecture diagram
+docs: update deployment guide
+test: add integration testing example
+refactor: reorganize example structure
+chore: update repository metadata
+```
+
+---
+
+# Best Practices
+
+## Architecture
+
+* Keep business logic inside services
+* Keep HTTP concerns inside the API layer
+* Avoid coupling between layers
+* Version APIs from day one
+
+---
+
+## Documentation
+
+* Document architectural decisions
+* Document public APIs
+* Keep examples updated
+* Prefer diagrams when appropriate
+
+---
+
+## Testing
+
+* Favor unit tests
+* Add integration tests for critical interactions
+* Use E2E tests sparingly
+* Test business rules independently of HTTP
+
+---
+
+## Security
+
+* Never hardcode secrets
+* Use environment variables
+* Validate all external input
+* Apply least-privilege principles
+
+---
+
+# Roadmap
+
+* [ ] Complete FastAPI example implementation
+* [ ] Complete Express example implementation
+* [ ] Add NestJS example implementation
+* [ ] Add Spring Boot example implementation
+* [ ] Add Docker deployment examples
+* [ ] Add authentication architecture guide
+* [ ] Add OpenAPI documentation examples
+* [ ] Add database migration examples
+
+---
+
+# Related Documentation
+
+* docs/architecture.md
+* docs/api-reference.md
+* docs/database-schema.md
+* docs/deployment.md
+* examples/README.md
+
+---
+
+# License
+
+See:
+
+```text
+LICENSE
+```
+
+---
+
+# Contributing
+
+See:
+
+```text
+CONTRIBUTING.md
+```
+
+---
+
+# Changelog
+
+See:
+
+```text
+CHANGELOG.md
+```
+
+---
+
+*Part of the proyectos_sena ecosystem. Designed as a reusable backend architecture reference and learning resource.*
