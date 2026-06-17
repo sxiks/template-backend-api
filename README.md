@@ -1,528 +1,147 @@
-# template-backend-api
+# Backend Fundamentals
 
-> A language-agnostic backend architecture template designed to teach professional API organization, documentation practices, testing strategies, and scalable project structure.
-
----
-
-# Overview
-
-Backend APIs power most modern applications. Regardless of whether a project is built with FastAPI, Express, Spring Boot, NestJS, Flask, or another framework, successful systems tend to share the same architectural principles:
-
-* Clear separation of concerns
-* Layered architecture
-* Versioned APIs
-* Environment-based configuration
-* Structured testing
-* Documentation-first development
-* Scalability and maintainability
-
-This repository is not a runnable application.
-
-Instead, it serves as a reference architecture, learning resource, and reusable template for designing professional backend systems.
+> A structured learning repository covering backend development fundamentals, HTTP communication, REST APIs, authentication, authorization, API design, and backend architecture concepts.
 
 ---
 
-# Repository Goals
+# Purpose
 
-This repository exists to help developers:
+Backend systems are responsible for processing requests, implementing business logic, managing data, and exposing services to clients through APIs.
 
-* Learn backend architecture fundamentals
-* Understand professional project organization
-* Compare implementations across technologies
-* Establish consistent development conventions
-* Build maintainable backend services
-* Create new API projects from a proven structure
+This repository provides a structured path for learning the core concepts required to design, build, and understand modern backend applications.
+
+The focus is on understanding principles and concepts rather than mastering a specific framework.
 
 ---
 
-# When to Use This Template
+# Learning Objectives
 
-Use this template when you are:
+By completing this repository, you should be able to:
 
-* Starting a new REST API project
-* Learning backend architecture
-* Building portfolio projects
-* Designing service-oriented applications
-* Creating reusable backend standards
-* Teaching backend development concepts
-
-Examples:
-
-* User management APIs
-* Inventory systems
-* Authentication services
-* E-commerce backends
-* Educational projects
-* Internal business services
+* Understand how the internet and web communication work
+* Explain the HTTP protocol and request-response lifecycle
+* Design and document RESTful APIs
+* Work with JSON as a data exchange format
+* Understand authentication and authorization concepts
+* Compare session-based and token-based authentication
+* Understand how JWT works and when to use it
+* Design maintainable backend architectures
+* Apply API design best practices
+* Analyze common backend development patterns
 
 ---
 
-# When Not to Use This Template
+# Learning Roadmap
 
-This repository is not intended for:
+Recommended study order:
 
-* Static websites
-* Frontend-only applications
-* Database-only exercises
-* Small academic scripts
-* Single-file prototypes
-
-Consider using a more specialized template for those scenarios.
-
----
-
-# Architecture Philosophy
-
-The template follows a layered architecture model.
-
-Each layer has a single responsibility.
-
-```text
-Client
-  ↓
-API Layer
-  ↓
-Service Layer
-  ↓
-Model Layer
-  ↓
-Database / External Systems
-```
-
-Benefits:
-
-* Easier maintenance
-* Better testing
-* Improved scalability
-* Cleaner code organization
-* Reduced coupling between components
+1. Internet Fundamentals
+2. HTTP Fundamentals
+3. JSON Fundamentals
+4. API Design Basics
+5. REST Architecture
+6. Authentication
+7. Authorization
+8. Cookies
+9. Sessions
+10. JWT
+11. Backend Architecture
+12. Framework Comparisons
+13. Practical Examples
+14. Exercises and Challenges
 
 ---
 
 # Repository Structure
 
 ```text
-template-backend-api/
+backend-fundamentals/
 │
-├── .github/
+├── theory/
 │
-├── config/
-│   ├── database.yml
-│   ├── environments.yml
-│   └── logging.yml
+├── diagrams/
 │
-├── docs/
-│   ├── api-reference.md
-│   ├── architecture.md
-│   ├── database-schema.md
-│   ├── deployment.md
-│   │
-│   └── technologies/
-│       ├── fastapi.md
-│       └── express.md
+├── exercises/
+│   ├── beginner/
+│   ├── intermediate/
+│   └── advanced/
 │
 ├── examples/
-│   ├── README.md
-│   │
-│   ├── fastapi/
-│   │   ├── README.md
-│   │   ├── 01-basic-endpoint/
-│   │   ├── 02-crud/
-│   │   └── 03-auth/
-│   │
-│   └── express/
-│       ├── README.md
-│       ├── 01-basic-endpoint/
-│       ├── 02-crud/
-│       └── 03-auth/
+│   ├── express/
+│   └── fastapi/
 │
-├── src/
-│   ├── api/
-│   │   └── v1/
-│   ├── core/
-│   ├── models/
-│   ├── services/
-│   └── utils/
-│
-├── tests/
-│   ├── e2e/
-│   ├── integration/
-│   └── unit/
-│
-├── .env.example
-├── .gitignore
+├── README.md
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
-├── LICENSE
-└── README.md
+└── LICENSE
 ```
 
----
+## Directory Overview
 
-# Core Directories
-
-## src/
-
-Reference implementation structure.
-
-Represents how a professional backend application should be organized.
-
-| Directory | Responsibility                          |
-| --------- | --------------------------------------- |
-| api/      | Routes, controllers, HTTP communication |
-| services/ | Business logic                          |
-| models/   | Data structures and persistence         |
-| core/     | Application infrastructure              |
-| utils/    | Shared helpers and utilities            |
+| Directory  | Purpose                                                |
+| ---------- | ------------------------------------------------------ |
+| theory/    | Concept explanations and learning material             |
+| diagrams/  | Visual representations and architecture diagrams       |
+| exercises/ | Practice activities and challenges                     |
+| examples/  | Small practical implementations demonstrating concepts |
 
 ---
 
-## tests/
+# Study Recommendations
 
-Reference testing pyramid.
+To get the most value from this repository:
+
+1. Read the theoretical material before reviewing examples.
+2. Draw your own diagrams while studying.
+3. Complete exercises without looking at solutions first.
+4. Compare implementations across different frameworks.
+5. Focus on understanding concepts rather than memorizing syntax.
+6. Revisit previous topics regularly to reinforce knowledge.
+
+Recommended progression:
 
 ```text
-tests/
-├── unit/
-├── integration/
-└── e2e/
-```
-
-Purpose:
-
-* Unit tests validate isolated behavior
-* Integration tests validate component interaction
-* E2E tests validate complete workflows
-
----
-
-## config/
-
-Contains examples of environment-dependent configuration.
-
-Examples:
-
-* Database settings
-* Logging configuration
-* Environment variables
-* Infrastructure parameters
-
-No values should be hardcoded inside application code.
-
----
-
-# Documentation
-
-All long-form documentation belongs in the `docs/` directory.
-
-## Architecture
-
-```text
-docs/architecture.md
-```
-
-Contains:
-
-* System design
-* Architectural decisions
-* Layer responsibilities
-* Design principles
-
----
-
-## API Reference
-
-```text
-docs/api-reference.md
-```
-
-Contains:
-
-* Endpoint documentation
-* Request examples
-* Response examples
-* Error formats
-
----
-
-## Database Schema
-
-```text
-docs/database-schema.md
-```
-
-Contains:
-
-* Tables
-* Relationships
-* Entity descriptions
-* Data modeling decisions
-
----
-
-## Deployment
-
-```text
-docs/deployment.md
-```
-
-Contains:
-
-* Environment setup
-* Infrastructure considerations
-* Deployment workflows
-* Production recommendations
-
----
-
-## Technology Notes
-
-```text
-docs/technologies/
-```
-
-Contains implementation-specific guidance.
-
-Current technologies:
-
-* FastAPI
-* Express
-
-Future technologies may include:
-
-* Spring Boot
-* NestJS
-* Flask
-* ASP.NET Core
-
----
-
-# Examples
-
-The repository includes framework-specific examples.
-
-Purpose:
-
-* Demonstrate architectural concepts
-* Compare implementations
-* Learn framework conventions
-* Understand how architecture translates into code
-
-See:
-
-```text
-examples/
-```
-
-For more information:
-
-```text
-examples/README.md
+Theory
+   ↓
+Diagrams
+   ↓
+Examples
+   ↓
+Exercises
 ```
 
 ---
 
-# Learning Path
+# References
 
-Recommended study order:
+## Official Documentation
 
-### Step 1
+* HTTP Documentation (MDN)
+* JSON Documentation
+* FastAPI Documentation
+* Express Documentation
+* OpenAPI Specification
 
-Read:
+## Recommended Books
 
-```text
-README.md
-```
+* Designing Data-Intensive Applications
+* Clean Architecture
+* Web API Design
+* RESTful Web APIs
 
-Understand the repository purpose and structure.
+## Related Repositories
 
----
-
-### Step 2
-
-Study:
-
-```text
-docs/architecture.md
-```
-
-Learn the architectural concepts.
-
----
-
-### Step 3
-
-Review:
-
-```text
-src/
-```
-
-Understand layer responsibilities.
+* programming-fundamentals
+* software-engineering-fundamentals
+* testing-fundamentals
+* database-fundamentals
+* backend-projects
+* system-design-fundamentals
 
 ---
 
-### Step 4
+# Repository Type
 
-Study:
+**Layer:** Knowledge
 
-```text
-tests/
-```
-
-Learn testing organization.
-
----
-
-### Step 5
-
-Review:
-
-```text
-docs/technologies/
-```
-
-Understand framework-specific considerations.
-
----
-
-### Step 6
-
-Explore:
-
-```text
-examples/fastapi/
-```
-
-and
-
-```text
-examples/express/
-```
-
-Compare implementations.
-
----
-
-# Development Workflow
-
-Recommended branch strategy:
-
-```text
-main
-develop
-feature/*
-fix/*
-docs/*
-chore/*
-```
-
----
-
-## Commit Convention
-
-Examples:
-
-```text
-feat: add user authentication example
-fix: correct architecture diagram
-docs: update deployment guide
-test: add integration testing example
-refactor: reorganize example structure
-chore: update repository metadata
-```
-
----
-
-# Best Practices
-
-## Architecture
-
-* Keep business logic inside services
-* Keep HTTP concerns inside the API layer
-* Avoid coupling between layers
-* Version APIs from day one
-
----
-
-## Documentation
-
-* Document architectural decisions
-* Document public APIs
-* Keep examples updated
-* Prefer diagrams when appropriate
-
----
-
-## Testing
-
-* Favor unit tests
-* Add integration tests for critical interactions
-* Use E2E tests sparingly
-* Test business rules independently of HTTP
-
----
-
-## Security
-
-* Never hardcode secrets
-* Use environment variables
-* Validate all external input
-* Apply least-privilege principles
-
----
-
-# Roadmap
-
-* [ ] Complete FastAPI example implementation
-* [ ] Complete Express example implementation
-* [ ] Add NestJS example implementation
-* [ ] Add Spring Boot example implementation
-* [ ] Add Docker deployment examples
-* [ ] Add authentication architecture guide
-* [ ] Add OpenAPI documentation examples
-* [ ] Add database migration examples
-
----
-
-# Related Documentation
-
-* docs/architecture.md
-* docs/api-reference.md
-* docs/database-schema.md
-* docs/deployment.md
-* examples/README.md
-
----
-
-# License
-
-See:
-
-```text
-LICENSE
-```
-
----
-
-# Contributing
-
-See:
-
-```text
-CONTRIBUTING.md
-```
-
----
-
-# Changelog
-
-See:
-
-```text
-CHANGELOG.md
-```
-
----
-
-*Part of the proyectos_sena ecosystem. Designed as a reusable backend architecture reference and learning resource.*
+**Domain:** Backend Development Fundamentals

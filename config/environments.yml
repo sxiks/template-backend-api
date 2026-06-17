@@ -1,8 +1,0 @@
-development:
-  debug: true
-
-staging:
-  debug: false
-
-production:
-  debug: false

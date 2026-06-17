@@ -1,8 +1,0 @@
-development:
-  level: DEBUG
-
-staging:
-  level: INFO
-
-production:
-  level: WARNING
